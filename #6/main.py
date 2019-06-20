@@ -5,25 +5,72 @@ If using a language that has no pointers (such as Python), you can assume you ha
 """
 
 
+class ptr:
+
+	def __init__(self, obj):
+		self.obj = obj
+
+	def get(self):
+		return self.obj
+
+	def set(self, obj):
+		self.obj = obj
+
+	def __del__(self):
+		print("ptr deleted")
+
+
+def dereference_ptr(ptr):
+	return ptr.get()
+
+
+def get_ptr(obj):
+	return ptr(obj)
+
+
 class Node:
 
-	def __init__(self, element, both):
-		self.element = element
+	def __init__(self, val, both):
+		self.val = val
 		self.both = both
+
+	def __del__(self):
+		print("node deleted")
 
 
 class XORLinkedList:
 
 	def __init__(self):
-		self.firstNodeId = 0
+		self.firstPtr = None
+		self.lastPtr = None
 
-	def add(self, element):
-		if self.firstNodeId == 0:
-			self.firstNodeId = id(Node(element, 0))
+	def add(self, val):
+		node = Node(val, None)
+		nodePtr = get_ptr(node)
+
+		if self.firstPtr == None:
+			self.firstPtr = nodePtr
+			self.lastPtr = nodePtr
 		else:
-			pass
+			lastNode = dereference_ptr(self.lastPtr)
+			node.both = lastNode.both
+			if lastNode.both == None:
+				lastNode.both = nodePtr
+			else:
+				lastNode.both ^= nodePtr
+
+	def print(self):
+		i = 0
+		ptr = self.firstPtr
+		while ptr != None:
+			node = dereference_ptr(ptr)
+			print(f"Element #{i} = {node.val}")
+			i += 1
+			ptr ^= node.both
 
 
-import ctypes
-a = "hello world"
-print(ctypes.cast(id(a), ctypes.py_object).value)
+xorList = XORLinkedList()
+xorList.add("Hello")
+xorList.add("World")
+xorList.add("!!!")
+xorList.print()
