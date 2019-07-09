@@ -1,3 +1,5 @@
+## Python
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -103,6 +105,9 @@ venv.bak/
 # mypy
 .mypy_cache/
 
+
+## Java
+
 # Compiled class file
 *.class
 
@@ -126,3 +131,8 @@ venv.bak/
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+
+
+## VS Code
+
+.vscode
