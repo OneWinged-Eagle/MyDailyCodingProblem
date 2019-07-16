@@ -9,7 +9,8 @@ Given the set of words 'bed', 'bath', 'bedbath', 'and', 'beyond', and the string
 from typing import List
 
 
-# with d = len(dictionary) and n the number of words in sentence: time O(d * n), space O(n)
+# with d = len(dictionary) and n the number of words in the sentence: Time O(d * n), Space O(n)
+# doesn't work for some cases (sentence3)
 def bruteForce(dictionary: List[str], sentence: str) -> List[str]:
 	sentenceList = []
 
@@ -27,28 +28,43 @@ def bruteForce(dictionary: List[str], sentence: str) -> List[str]:
 	return sentenceList
 
 
-def sentenceToList(dictionary: List[str], sentence: str) -> List[str]:
-	return bruteForce(dictionary, sentence)
+# with d = len(dictionary) and n the number of words in the sentence: Time O(d * n), Space O(n)
+def helper(dictionary: List[str], sentence: str, words: List[str]) -> List[str]:
+	if len(sentence) == 0:
+		return words
+
+	for word in dictionary:
+		if sentence.startswith(word):
+			tmp = helper(dictionary, sentence[len(word):], words + [word])
+			if len(tmp) != 0:
+				return tmp
+
+	return []
 
 
-sentence1 = sentenceToList(["quick", "brown", "the", "fox"], "thequickbrownfox")
+def sentenceToWords(dictionary: List[str], sentence: str) -> List[str]:
+	return helper(dictionary, sentence, [])
+
+
+sentence1 = sentenceToWords(["quick", "brown", "the", "fox"],
+                            "thequickbrownfox")
 print(
     f"listOfSentence([\"quick\", \"brown\", \"the\", \"fox\"], \"thequickbrownfox\") = {sentence1}"
 )
 
-sentence2 = sentenceToList(["bed", "bath", "bedbath", "and", "beyond"],
-                           "bedbathandbeyond")
+sentence2 = sentenceToWords(["bed", "bath", "bedbath", "and", "beyond"],
+                            "bedbathandbeyond")
 print(
     f"listOfSentence([\"bed\", \"bath\", \"bedbath\", \"and\", \"beyond\"], \"bedbathandbeyond\") = {sentence2}"
 )
 
-sentence3 = sentenceToList(["bed", "bedbath", "and", "beyond"],
-                           "bedbathandbeyond")
+sentence3 = sentenceToWords(["bed", "bedbath", "and", "beyond"],
+                            "bedbathandbeyond")
 print(
     f"listOfSentence([\"bed\", \"bedbath\", \"and\", \"beyond\"], \"bedbathandbeyond\") = {sentence3}"
 )
 
-sentence4 = sentenceToList(["bed", "and", "beyond"], "bedbathandbeyond")
+sentence4 = sentenceToWords(["bed", "and", "beyond"], "bedbathandbeyond")
 print(
     f"listOfSentence([\"bed\", \"and\", \"beyond\"], \"bedbathandbeyond\") = {sentence4}"
 )
