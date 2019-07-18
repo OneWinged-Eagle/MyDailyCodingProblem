@@ -15,11 +15,11 @@ For example, given the sequence [2, 1, 5, 7, 2, 0, 5], your algorithm should pri
 """
 
 import heapq
-from typing import Any, List
+from typing import List
 
 
 class MinHeap:
-	heap: List[Any]
+	heap: List[int]
 
 	def __init__(self):
 		self.heap = []
@@ -27,10 +27,10 @@ class MinHeap:
 	def push(self, val) -> None:
 		heapq.heappush(self.heap, val)
 
-	def pop(self) -> Any:
+	def pop(self) -> int:
 		return heapq.heappop(self.heap)
 
-	def __getitem__(self, i) -> Any:
+	def __getitem__(self, i) -> int:
 		return self.heap[i]
 
 	def __len__(self) -> int:
@@ -42,10 +42,10 @@ class MaxHeap(MinHeap):
 	def push(self, val) -> None:
 		heapq.heappush(self.heap, -val)
 
-	def pop(self) -> Any:
+	def pop(self) -> int:
 		return -heapq.heappop(self.heap)
 
-	def __getitem__(self, i) -> Any:
+	def __getitem__(self, i) -> int:
 		return -self.heap[i]
 
 

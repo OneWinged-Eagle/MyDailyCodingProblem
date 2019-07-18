@@ -8,13 +8,14 @@ Follow-up: Can you do this in O(N) time and constant space?
 
 
 def maxSumNonAdjacent(numbers):
-	if all(nb <= 0 for nb in numbers):
-		return max(numbers)
+	if not numbers:
+		return None
+	elif len(numbers) == 1:
+		return numbers[0]
 
-	maxSumWithPrev = 0
-	maxSumWithoutPrev = 0
+	maxSumWithPrev, maxSumWithoutPrev = numbers[1], numbers[0]
 
-	for nb in numbers:
+	for nb in numbers[2:]:
 		maxSumWithPrev, maxSumWithoutPrev = maxSumWithoutPrev + nb, max(
 		    maxSumWithPrev, maxSumWithoutPrev)
 
