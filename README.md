@@ -1,2 +1,2 @@
 # MyDailyCodingProblem
-My take, and thoughts, on some "Daily Coding Problem" problems.
+My take on some "Daily Coding Problem" problems. 
