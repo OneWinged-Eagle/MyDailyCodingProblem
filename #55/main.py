@@ -7,7 +7,6 @@ Implement a URL shortener with the following methods:
 Hint: What if we enter the same URL twice?
 """
 
-from random import randrange
 from typing import Dict
 
 alphanum = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
