@@ -27,7 +27,7 @@ def helper(numbers: List[int], currSum: int, k: int) -> List[int]:
 
 		else:
 			tmp = helper(numbers[:-1], currSum, k)
-			helper.cache[helperArgs] = tmp + [numbers[-1]] if tmp != None else helper(
+			helper.cache[helperArgs] = tmp + [numbers[-1]] if tmp is not None else helper(
 			    numbers[:-1], currSum - numbers[-1], k)
 
 	return helper.cache[helperArgs]

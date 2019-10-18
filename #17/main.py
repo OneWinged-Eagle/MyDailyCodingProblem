@@ -55,7 +55,7 @@ class Node:
 
 
 def makeTree(leveledNodes: List[Tuple[int, Node]]) -> Node:
-	if leveledNodes == None:
+	if leveledNodes is None:
 		return None
 
 	currLevel = leveledNodes[0][0]
@@ -77,7 +77,7 @@ def makeTree(leveledNodes: List[Tuple[int, Node]]) -> Node:
 
 
 def getType(name: str) -> Type:
-	if re.search(r"\..+$", name) != None:
+	if re.search(r"\..+$", name) is not None:
 		return Type.file
 	elif name.find(".") == -1:
 		return Type.dir

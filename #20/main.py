@@ -31,7 +31,7 @@ class SLinkedList:
 	def __init__(self, vals: List[Any] = None):
 		self.head = None
 		self.length = 0
-		if vals != None:
+		if vals is not None:
 			lastNode = None
 			for val in vals[::-1]:
 				newNode = Node(val, lastNode)
@@ -42,7 +42,7 @@ class SLinkedList:
 	def __repr__(self):
 		rpz = ""
 		node = self.head
-		while node != None:
+		while node is not None:
 			rpz += f"{node} -> "
 			node = node.next
 		return rpz[:-4]
@@ -59,10 +59,10 @@ def intersectingNode(list1: SLinkedList, list2: SLinkedList) -> Node:
 			node2 = node2.next
 
 	intersect = None
-	while node1 != None and node2 != None:
-		if node1.val == node2.val and intersect == None:
+	while node1 is not None and node2 is not None:
+		if node1.val == node2.val and intersect is None:
 			intersect = node1
-		elif node1.val != node2.val and intersect != None:
+		elif node1.val != node2.val and intersect is not None:
 			intersect = None
 		node1 = node1.next
 		node2 = node2.next

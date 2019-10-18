@@ -16,7 +16,7 @@ def substring(string: str, chars: Set[str]) -> str:
 
 	while start < len(string):
 		if len(checks) == len(chars):
-			if substr == None or end - start < len(substr):
+			if substr is None or end - start < len(substr):
 				substr = string[start:end]
 
 			if string[start] in checks:

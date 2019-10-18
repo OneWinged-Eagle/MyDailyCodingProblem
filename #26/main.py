@@ -28,7 +28,7 @@ class SLinkedList:
 
 	def __init__(self, vals: List[Any] = None):
 		self.head = None
-		if vals != None:
+		if vals is not None:
 			lastNode = None
 			for val in vals[::-1]:
 				newNode = Node(val, lastNode)
@@ -38,7 +38,7 @@ class SLinkedList:
 	def __repr__(self):
 		rpz = ""
 		node = self.head
-		while node != None:
+		while node is not None:
 			rpz += f"{node} -> "
 			node = node.next
 		return rpz[:-4]
@@ -50,7 +50,7 @@ class SLinkedList:
 
 		fastIndex = 0
 		fastNode = self.head
-		while fastIndex < k and fastNode != None:
+		while fastIndex < k and fastNode is not None:
 			fastIndex += 1
 			fastNode = fastNode.next
 
@@ -59,11 +59,11 @@ class SLinkedList:
 			return
 
 		slowNode = None
-		while fastNode != None:
+		while fastNode is not None:
 			fastNode = fastNode.next
-			slowNode = slowNode.next if slowNode != None else self.head
+			slowNode = slowNode.next if slowNode is not None else self.head
 
-		if slowNode == None:
+		if slowNode is None:
 			self.head = self.head.next
 		else:
 			slowNode.next = slowNode.next.next

@@ -47,7 +47,7 @@ def deserialise(s):
 
 # time O(log n) (?), space O(1), can't use "None" as Node.val (and any strings with blank characters)
 def serialise(root):
-	if root == None:
+	if root is None:
 		return None
 	return f"{root.val} {serialise(root.left)} {serialise(root.right)}"
 

@@ -24,10 +24,10 @@ class Node:
 
 	def __init__(self, val: Any, left: Node = None, right: Node = None):
 		self.val = val
-		if left != None:
+		if left is not None:
 			left.parent = self
 		self.left = left
-		if right != None:
+		if right is not None:
 			right.parent = self
 		self.right = right
 		self.parent = None
@@ -42,13 +42,13 @@ class Node:
 			return False
 
 		curr = self.parent
-		while curr != None:
+		while curr is not None:
 			if curr.isLocked:
 				return False
 			curr = curr.parent
 
 		curr = self.parent
-		while curr != None:
+		while curr is not None:
 			curr.nbDescendantsLocked += 1
 			curr = curr.parent
 
@@ -60,7 +60,7 @@ class Node:
 			return False
 
 		curr = self.parent
-		while curr != None:
+		while curr is not None:
 			curr.nbDescendantsLocked -= 1
 			curr = curr.parent
 

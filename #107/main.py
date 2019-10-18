@@ -36,7 +36,7 @@ class Node:
 
 
 def printLevel(root: Node) -> None:
-	if root == None:
+	if root is None:
 		return
 
 	queue = deque([root])
@@ -46,10 +46,10 @@ def printLevel(root: Node) -> None:
 
 		print(curr.val, end=' ')
 
-		if curr.left != None:
+		if curr.left is not None:
 			queue.append(curr.left)
 
-		if curr.right != None:
+		if curr.right is not None:
 			queue.append(curr.right)
 
 

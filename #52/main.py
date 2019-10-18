@@ -36,7 +36,7 @@ class DoublyLinkedList:
 		self.last = None
 
 	def pushFront(self, key: Any, val: Any) -> Node:
-		if self.first == None:
+		if self.first is None:
 			self.first = self.last = Node(key, val)
 		else:
 			self.first = Node(key, val, self.first)

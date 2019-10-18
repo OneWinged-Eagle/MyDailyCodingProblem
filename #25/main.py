@@ -26,11 +26,11 @@ def matchV1(string: str, regex: str) -> bool:
 			prevCn = None if n - 1 < 0 else regex[n - 1]
 			postCn = None if n + 1 >= len(regex) else regex[n + 1]
 			postCi = None if i + 1 >= len(string) else string[i + 1]
-			if prevCn == None:
+			if prevCn is None:
 				return False
 			elif prevCn == "." or prevCn == ci:
 				i += 1
-				if postCn != None and postCi != None and postCn == postCi:
+				if postCn is not None and postCi is not None and postCn == postCi:
 					n += 1
 			else:
 				n += 1

@@ -9,7 +9,7 @@ from typing import List, Tuple
 
 
 def smallestInterval(intervals: List[Tuple[int, int]]) -> Tuple[int, int]:
-	if intervals == None or len(intervals) == 0:
+	if intervals is None or len(intervals) == 0:
 		return None
 
 	smallestMax, biggestMin = inf, -inf

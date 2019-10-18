@@ -35,10 +35,10 @@ def helper(nodes: List[Node], lvl: int = 0) -> Tuple[int, int]:
 	for node in nodes:
 		currSum += node.val
 
-		if node.left != None:
+		if node.left is not None:
 			children.append(node.left)
 
-		if node.right != None:
+		if node.right is not None:
 			children.append(node.right)
 
 	if len(children) != 0:
@@ -48,7 +48,7 @@ def helper(nodes: List[Node], lvl: int = 0) -> Tuple[int, int]:
 
 
 def minSumLvl(root: Node) -> int:
-	if root == None:
+	if root is None:
 		return 0
 
 	return helper([root])[1]

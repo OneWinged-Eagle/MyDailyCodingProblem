@@ -26,7 +26,7 @@ class SLinkedList:
 	def __init__(self, vals: List[Any] = None):
 		self.head = None
 
-		if vals != None:
+		if vals is not None:
 			lastNode = None
 			for val in vals[::-1]:
 				newNode = Node(val, lastNode)
@@ -36,7 +36,7 @@ class SLinkedList:
 	def toList(self) -> List[Any]:
 		l = []
 		node = self.head
-		while node != None:
+		while node is not None:
 			l.append(node.val)
 			node = node.next
 		return l
@@ -44,7 +44,7 @@ class SLinkedList:
 	def __repr__(self):
 		rpz = "SLinkedList("
 		node = self.head
-		while node != None:
+		while node is not None:
 			rpz += f"{node} -> "
 			node = node.next
 		return rpz[:-4] + ")"

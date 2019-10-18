@@ -24,7 +24,7 @@ class SLinkedList:
 	def __init__(self, vals: List[Any] = None):
 		self.head = None
 
-		if vals != None:
+		if vals is not None:
 			lastNode = None
 			for val in vals[::-1]:
 				newNode = Node(val, lastNode)
@@ -34,7 +34,7 @@ class SLinkedList:
 	def __repr__(self):
 		rpz = "SLinkedList("
 		node = self.head
-		while node != None:
+		while node is not None:
 			rpz += f"{node} -> "
 			node = node.next
 		return rpz[:-4] + ")"
@@ -51,14 +51,14 @@ def merge(lLists: List[SLinkedList]) -> SLinkedList:
 
 		for i, lList in enumerate(lLists):
 			if lList.head:
-				if smallest == None or lList.head.val < smallest:
+				if smallest is None or lList.head.val < smallest:
 					smallest = lList.head.val
 					smalls = [i]
 				elif lList.head.val == smallest:
 					smalls.append(i)
 
 		for i in smalls:
-			if mergedList.head == None:
+			if mergedList.head is None:
 				mergedList.head = Node(lLists[i].head.val)
 				curr = mergedList.head
 			else:

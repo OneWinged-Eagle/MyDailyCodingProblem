@@ -15,7 +15,7 @@ def helper(numbers: List[int], K: int, total: int) -> List[int]:
 		return numbers
 
 	left = helper(numbers[:-1], K, total - numbers[-1])
-	if left != None:
+	if left is not None:
 		return left
 	return helper(numbers[1:], K, total - numbers[0])
 

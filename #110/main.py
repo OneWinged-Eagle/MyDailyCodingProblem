@@ -40,18 +40,18 @@ class Node:
 
 
 def paths(root: Node, base: List[Any] = []) -> List[List[Any]]:
-	if root == None:
+	if root is None:
 		return None
 
 	b = base + [root.val]
 
 	left, right = paths(root.left, b), paths(root.right, b)
 
-	if left != None and right != None:
+	if left is not None and right is not None:
 		return left + right
-	elif left != None:
+	elif left is not None:
 		return left
-	elif right != None:
+	elif right is not None:
 		return right
 
 	return [b]

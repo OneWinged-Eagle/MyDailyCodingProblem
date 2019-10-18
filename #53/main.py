@@ -12,7 +12,7 @@ class Stack:
 		self.stack = []
 
 	def push(self, val: Any) -> None:
-		if val == None:
+		if val is None:
 			return
 
 		self.stack.append(val)
@@ -39,7 +39,7 @@ class Queue:
 		self.reserveStack = Stack()
 
 	def enqueue(self, val: Any) -> None:
-		if val == None:
+		if val is None:
 			return
 
 		self.mainStack.push(val)
