@@ -13,7 +13,7 @@ Return the nodes 5 and 15.
 """
 
 from __future__ import annotations
-from typing import Any, Tuple
+from typing import Any, Iterator, Tuple
 
 
 class Node:
@@ -26,7 +26,7 @@ class Node:
 		self.left = left
 		self.right = right
 
-	def inorder(self) -> Node:
+	def inorder(self) -> Iterator[Node]:
 		if self.left is not None:
 			yield from self.left.inorder()
 
@@ -35,7 +35,7 @@ class Node:
 		if self.right is not None:
 			yield from self.right.inorder()
 
-	def reverseInorder(self) -> Node:
+	def reverseInorder(self) -> Iterator[Node]:
 		if self.right is not None:
 			yield from self.right.reverseInorder()
 

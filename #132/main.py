@@ -101,7 +101,7 @@ class BST:
 		return repr(self.root)
 
 
-class HitCounter(BST):
+class HitCounterBST(BST):
 
 	def __init__(self):
 		super().__init__()
@@ -114,6 +114,25 @@ class HitCounter(BST):
 
 	def range(self, lower, upper) -> int:
 		return len(super().range(lower, upper))
+
+
+from sortedcontainers import SortedList
+
+
+class HitCounter:
+	records: SortedList
+
+	def __init__(self):
+		self.records = SortedList()
+
+	def record(self, timestamp: int):
+		self.records.add(timestamp)
+
+	def total(self) -> int:
+		return len(self.records)
+
+	def range(self, lower, upper) -> int:
+		return sum(1 for _ in self.records.irange(lower, upper))
 
 
 hc = HitCounter()
