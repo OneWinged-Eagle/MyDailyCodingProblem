@@ -25,7 +25,7 @@ type Node struct {
 	children map[rune]*Node
 }
 
-func newNode(char rune) (node *Node) {
+func newNode(char rune) *Node {
 	return &Node{count: 1, children: make(map[rune]*Node)}
 }
 
