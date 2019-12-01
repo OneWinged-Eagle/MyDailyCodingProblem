@@ -94,7 +94,7 @@ func (bst *BST) add(key int) (count int) {
 
 	curr := bst.head
 
-	for true {
+	for {
 		if key < curr.key {
 			if curr.left != nil {
 				curr = curr.left
