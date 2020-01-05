@@ -1,4 +1,6 @@
-"""
+package main
+
+/*
 Suppose you have a multiplication table that is N by N. That is, a 2D array where the value at the i-th row and j-th column is (i + 1) * (j + 1) (if 0-indexed) or i * j (if 1-indexed).
 
 Given integers N and X, write a function that returns the number of times X appears as a value in an N by N multiplication table.
@@ -18,4 +20,26 @@ For example, given N = 6 and X = 12, you should return 4, since the multiplicati
 | 6 | 12 | 18 | 24 | 30 | 36 |
 
 And there are 4 12's in the table.
-"""
+*/
+
+import "fmt"
+
+func nbInMult(n, x int) (nb int) {
+	if n <= 0 || x <= 0 || n*n < x {
+		return
+	}
+
+	for i := 1; i <= n; i++ {
+		if x%i == 0 && x/i <= n {
+			nb++
+		}
+	}
+
+	return
+}
+
+func main() {
+	for i := 0; i <= 37; i++ {
+		fmt.Printf("nbInMult(6, %d) = %d\n", i, nbInMult(6, i))
+	}
+}
