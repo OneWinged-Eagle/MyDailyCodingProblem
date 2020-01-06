@@ -1,4 +1,6 @@
-"""
+package main
+
+/*
 Write a map implementation with a get function that lets you retrieve the value of a key at a particular time.
 
 It should contain the following methods:
@@ -22,4 +24,10 @@ d.get(1, 10) # get key 1 at time 10 should be 1
 d.set(1, 1, 0) # set key 1 to value 1 at time 0
 d.set(1, 2, 0) # set key 1 to value 2 at time 0
 d.get(1, 0) # get key 1 at time 0 should be 2
-"""
+*/
+
+import "fmt"
+
+func main() {
+	fmt.Print("TODO")
+}
