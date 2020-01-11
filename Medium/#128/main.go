@@ -1,4 +1,6 @@
-"""
+package main
+
+/*
 The Tower of Hanoi is a puzzle game with three rods and n disks, each a different size.
 
 All the disks start off on the first rod in a stack. They are ordered by size, with the largest disk on the bottom and the smallest one at the top.
@@ -20,4 +22,53 @@ Move 1 to 3
 Move 2 to 1
 Move 2 to 3
 Move 1 to 3
-"""
+*/
+
+import "fmt"
+
+type stack []int
+
+func (s *stack) push(val int) {
+	*s = append(*s, val)
+}
+
+func (s *stack) pop() (val int) {
+	if len(*s) == 0 {
+		return 0
+	}
+
+	val, *s = (*s)[len(*s)-1], (*s)[:len(*s)-1]
+	return
+}
+
+func helper(n int, source, inter, target stack) int {
+	if n == 1 {
+		target.push(source.pop())
+		return 1
+	}
+
+	moves := helper(n-1, source, target, inter)
+
+	target.push(source.pop())
+
+	return moves + helper(n-1, inter, source, target) + 1
+}
+
+func toh(n int) int {
+	if n <= 0 {
+		return n
+	}
+
+	disks := make([]int, n)
+	for i := range disks {
+		disks[i] = n - i
+	}
+
+	return helper(n, disks, []int{}, []int{})
+}
+
+func main() {
+	for n := 0; n <= 10; n++ {
+		fmt.Printf("toh(%d) = %d\n", n, toh(n))
+	}
+}
