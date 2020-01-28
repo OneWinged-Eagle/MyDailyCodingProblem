@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"strings"
 )
 
 type graph struct {
@@ -15,11 +14,7 @@ func newGraph() *graph {
 }
 
 func (g graph) String() string {
-	var builder strings.Builder
-
-	fmt.Fprintf(&builder, "graph(\n\tvertices: %v\n\tadjacencies: %v\n)", g.vertices, g.adjacencies)
-
-	return builder.String()
+	return fmt.Sprintf("graph(\n\tvertices: %v\n\tadjacencies: %v\n)", g.vertices, g.adjacencies)
 }
 
 func (g *graph) connect(v, w int) {
